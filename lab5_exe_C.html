@@ -78,9 +78,12 @@ Description : DOM Elements.
 					flex-direction: column; /* Stack nav items vertically on mobile */
 				}
 			}
+	
 			.companyName {
 				border: 1px solid red;
+			
 			}
+			
 		</style>
 	</head>
 	<body>
@@ -206,33 +209,74 @@ Description : DOM Elements.
 		<script>
 			document.addEventListener('DOMContentLoaded', function afterRender() {
 				// Task 1: Set the text content of all elements with the class 'companyName' and remove their border
+				document.querySelectorAll('.companyName').forEach((element) => {
+					element.textContent = 'Mark Jimenez';
+					element.classList.remove('companyName'); // Remove the entire class
 
+				});
 
 				// Task 2: Change the background color of the navigation bar
-				
+				document.querySelector('nav').style.backgroundColor = 'gray';
 
 				// Task 3: Hide the section titled 'What is full-stack?'
-
+				const Question = document.querySelectorAll("h2")
+				Question.forEach((element) => {
+					if (element.textContent === "What is full-stack?") {
+						element.parentElement.style.display = "none";
+					}
+				});
 
 				// Task 4: Create a new <p> element and append it to the 'About Us' section
+				const newPP = document.createElement('p');
+				newPP.textContent = "Human soul transaction is not legal";
+				document.querySelector('Section').appendChild(newPP);
+				
 
 
 				// Task 5: Add placeholders to input elements based on their corresponding label IDs
+				const input = document.querySelectorAll('label');
+				for (const i of input){
+					const id = i.getAttribute('for');
+					const y = document.getElementById(id);
+					y.setAttribute('placeholder', id);
+				}
 
 
 				// Task 6: Set the src attribute of the image
-
+				const yeet = document.querySelector('img');
+				yeet.setAttribute('src','./images/logo.svg')
 
 				// Task 7: Add a new item in the navigation menu
+				const li = document.createElement('li');
+				const ahh = document.createElement('a');
+				ahh.textContent = "BOOYAH";
+				li.appendChild(ahh);
+				document.querySelector('nav ul').appendChild(li);
+
+				
+
 
 
 				// Task 8: Change the submit button text upon clicking and make it disabled
+				const butt= document.querySelector('input[type="button"]');
+				butt.addEventListener('click',function(){
+
+					butt.value = 'Butted';
+					butt.disabled = true;
+				})
+
 
 
 				// Task 9: Change the text color of each item in the 'Related Links' to green
-
+				const butty = document.querySelectorAll('aside ul li');
+				butty.forEach((element) => {
+					element.style.color = 'green';
+				});
 
 				// Task 10: Add a red solid border to the footer
+
+				document.querySelector('footer').style.border = 'red solid 2px'
+
 			});
 		</script>
 	</body>
